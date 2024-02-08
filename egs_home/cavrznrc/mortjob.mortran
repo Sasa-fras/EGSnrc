@@ -3833,9 +3833,9 @@ REPLACE {$TIME_RESOLUTION} WITH {0.01}
 %Q1
 "#############################################################################"
 "                                                                             "
-" EGSnrc machine dependent macro file for linux                               "
+" EGSnrc machine dependent macro file for linux (fe83057)                     "
 "                                                                             "
-" Created by configure version 2.0 on Mon Feb  5 11:05:46 PM EST 2024         "
+" Created by configure version 2.0 on Thu Feb  8 01:33:37 PM EST 2024         "
 "                                                                             "
 " You may add your own machine dependent macros to this file,                 "
 " but be carefull to not overwrite it if you re-run configure.                "
@@ -3843,18 +3843,18 @@ REPLACE {$TIME_RESOLUTION} WITH {0.01}
 "#############################################################################"
 
 REPLACE {$MACHINE} WITH
-  {,'linux',};
+  {,'linux (fe83057)',};
 REPLACE {$HEN_HOUSE} WITH
   {'/home/public/EGSnrc/HEN_HOUSE/'};
 REPLACE {$CANONICAL_SYSTEM} WITH
   {'x86_64-unknown-linux-gnu'};
 REPLACE {$CONFIGURATION_NAME} WITH
-  {'linux'};
+  {'fe83057'};
 REPLACE {$EGS_CONFIG} WITH
-  {'/home/public/EGSnrc/HEN_HOUSE/specs/linux.conf'};
+  {'/home/public/EGSnrc/HEN_HOUSE/specs/fe83057.conf'};
 
 REPLACE {$CONFIG_TIME} WITH
-  {'2024-02-06 04:05:46 UTC'};
+  {'2024-02-08 18:33:37 UTC'};
 
 " System dependent stuff "
 "========================================"
@@ -23359,7 +23359,7 @@ C*****************************************************************************
 
       subroutine egs_print_configuration_name(ounit)
       integer ounit
-      write(6,'(a,$)') 'linux'
+      write(6,'(a,$)') 'fe83057'
       return
       end
 
@@ -23373,13 +23373,13 @@ C******************************************************************************
       subroutine egs_get_configuration_name(res)
       character*(*) res
       integer l1,l2
-      l1 = lnblnk1('linux')
+      l1 = lnblnk1('fe83057')
       l2 = len(res)
       res(:l2) = ' '
       if( l2.ge.l1 ) then
-        res(:l1) = 'linux'
+        res(:l1) = 'fe83057'
       else
-        res(:l2) = 'linux'
+        res(:l2) = 'fe83057'
       end if
       return
       end
