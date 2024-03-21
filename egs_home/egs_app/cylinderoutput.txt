@@ -1,0 +1,380 @@
+In EGS_Application::initSimulation()
+================================================================================
+EGSnrc version 4 for x86_64-unknown-linux-gnu          Thu Mar 21 11:06:19 2024
+================================================================================
+configuration............................................fe83057
+configuration time.......................................2024-02-08 18:33:37 UTC
+app compile time.........................................2024-02-08 18:55:47 UTC
+git commit hash..........................................de801d4
+application..............................................egs_app
+pegs file................................................
+using host...............................................linux-virtualbox
+input file...............................................cylinder
+output file(s)...........................................cylinder
+================================================================================
+In initCrossSections(): spin effects = 1
+ ===> Photonuclear flag:   0
+ RAYLEIGH OPTION REQUESTED FOR MEDIUM NUMBER  1
+
+ RAYLEIGH OPTION REQUESTED FOR MEDIUM NUMBER  2
+
+ RAYLEIGH OPTION REQUESTED FOR MEDIUM NUMBER  3
+
+ RAYLEIGH OPTION REQUESTED FOR MEDIUM NUMBER  4
+
+  PEGSLESS INPUT.  CALCULATING ELECTRON CROSS-SECTIONS.
+  density_file carbondioxide                                                                                                                                                                                                                                                   
+  density_file air_dry_nearsealevel                                                                                                                                                                                                                                            
+  density_file water_liquid                                                                                                                                                                                                                                                    
+  density_file aluminum                                                                                                                                                                                                                                                        
+
+  Medium data: 
+
+ AE =    5.21000E-01 MeV,  UE =    5.05110E+01 MeV
+ AP =    1.00000E-02 MeV,  UP =    5.00000E+01 MeV
+
+  No material data file supplied.  Material data obtained from
+  .egsinp file or density correction file.
+
+   Medium: carbon                  
+ Sterncid: carbon                  
+     rho:    1.84212E-03 g/cm^3
+ Elements: C   O   
+    rhoz:    2.72916E-01   7.27084E-01
+      pz:    2.27219E-02   4.54445E-02
+  iunrst:     0
+  iaprim:     0
+    gasp:    0.00000E+00 atm.
+  density correction file: /home/public/Desktop/UNH-npg-EGSnrc/HEN_HOUSE/pegs4/density_corrections/compounds/carbondioxide.density
+
+   Medium: air                     
+ Sterncid: air                     
+     rho:    1.20479E-03 g/cm^3
+ Elements: C   N   O   AR  
+    rhoz:    1.24000E-04   7.55267E-01   2.31781E-01   1.28270E-02
+      pz:    1.03237E-05   5.39218E-02   1.44869E-02   3.21092E-04
+  iunrst:     0
+  iaprim:     0
+    gasp:    0.00000E+00 atm.
+  density correction file: /home/public/Desktop/UNH-npg-EGSnrc/HEN_HOUSE/pegs4/density_corrections/compounds/air_dry_nearsealevel.density
+
+   Medium: water                   
+ Sterncid: water                   
+     rho:    1.00000E+00 g/cm^3
+ Elements: H   O   
+    rhoz:    1.11894E-01   8.88106E-01
+      pz:    1.11009E-01   5.55087E-02
+  iunrst:     0
+  iaprim:     0
+    gasp:    0.00000E+00 atm.
+  density correction file: /home/public/Desktop/UNH-npg-EGSnrc/HEN_HOUSE/pegs4/density_corrections/compounds/water_liquid.density
+
+   Medium: aluminum                
+ Sterncid: aluminum                
+     rho:    2.69890E+00 g/cm^3
+ Elements: AL  
+    rhoz:    1.00000E+00
+      pz:    3.70624E-02
+  iunrst:     0
+  iaprim:     0
+    gasp:    0.00000E+00 atm.
+  density correction file: /home/public/Desktop/UNH-npg-EGSnrc/HEN_HOUSE/pegs4/density_corrections/elements/aluminum.density
+
+
+(Re)-initializing photon cross sections with files from the series: xcom
+
+ Compton cross sections: default
+ Using Compton cross sections from /home/public/Desktop/UNH-npg-EGSnrc/HEN_HOUSE/data/compton_sigma.data
+ Working on medium   1 ... 
+  ->  100 atomic ff values computed!
+      preparing data for Rayleigh sampling ... done
+
+OK
+ Working on medium   2 ... 
+  ->  100 atomic ff values computed!
+      preparing data for Rayleigh sampling ... done
+
+OK
+ Working on medium   3 ... 
+  ->  100 atomic ff values computed!
+      preparing data for Rayleigh sampling ... done
+
+OK
+ Working on medium   4 ... 
+  ->  100 atomic ff values computed!
+      preparing data for Rayleigh sampling ... done
+
+OK
+
+Reading screened Rutherford MS data ...............  done 
+
+
+Reading spin data base from /home/public/Desktop/UNH-npg-EGSnrc/HEN_HOUSE/data/spinms.data
+EGSnrc spin data, version 2.0   
+Data generated on a machine with 1234 endianess
+The endianess of this CPU is 1234
+Ranges:      1.00   100.00  0.30054  1.00000
+
+
+  medium    1 .....................  done
+  medium    2 .....................  done
+  medium    3 .....................  done
+  medium    4 .....................  done
+  
+  Medium            1  sige =    6.4712284355807297        6.2399783804553692       monotone =  F F
+  Medium            2  sige =    6.4771747413144674        6.2460034263726785       monotone =  F F
+  Medium            3  sige =    6.3995325640095873        6.1904836659459477       monotone =  F F
+  Medium            4  sige =    7.2949686208462214        7.0216623207265503       monotone =  F F
+  
+  Initializing tmxs for estepe =   0.25000000000000000       and ximax =   0.50000000000000000     
+  
+
+Bound Compton scattering requested, reading data ......  Done
+
+ Initializing Bound Compton scattering ......
+ Medium   1 has   7 shells: 
+   1   10   1  0.09091 0.210E+02     0.285
+   2   11   2  0.09091 0.110E+03     0.011
+   3   12   3  0.09091 0.669E+02     0.011
+   4   17   1  0.18182 0.155E+02     0.543
+   5   18   2  0.18182 0.793E+02     0.024
+   6   19   3  0.18182 0.479E+02     0.014
+   7   20   4  0.18182 0.479E+02     0.014
+ Medium   2 has  18 shells: 
+   1   10   1  0.00004 0.210E+02     0.285
+   2   11   2  0.00004 0.110E+03     0.011
+   3   12   3  0.00004 0.669E+02     0.011
+   4   13   1  0.21604 0.178E+02     0.410
+   5   14   2  0.21604 0.921E+02     0.015
+   6   15   3  0.21604 0.558E+02     0.014
+   7   16   4  0.10802 0.558E+02     0.014
+   8   17   1  0.05804 0.155E+02     0.543
+   9   18   2  0.05804 0.793E+02     0.024
+  10   19   3  0.05804 0.479E+02     0.014
+  11   20   4  0.05804 0.479E+02     0.014
+  12   72   1  0.00129 0.671E+01     3.203
+  13   73   2  0.00129 0.271E+02     0.326
+  14   74   3  0.00129 0.142E+02     0.251
+  15   75   4  0.00257 0.142E+02     0.249
+  16   76   5  0.00129 0.889E+02     0.029
+  17   77   6  0.00129 0.606E+02     0.016
+  18   78   7  0.00257 0.606E+02     0.016
+ Medium   3 has   5 shells: 
+   1    1   1  0.19999 0.116E+03     0.014
+   2   17   1  0.20000 0.155E+02     0.543
+   3   18   2  0.20000 0.793E+02     0.024
+   4   19   3  0.20000 0.479E+02     0.014
+   5   20   4  0.20000 0.479E+02     0.014
+ Medium   4 has   6 shells: 
+   1   39   1  0.15385 0.940E+01     1.560
+   2   40   2  0.15385 0.418E+02     0.118
+   3   41   3  0.15385 0.230E+02     0.073
+   4   42   4  0.30769 0.230E+02     0.073
+   5   43   5  0.15385 0.170E+03     0.006
+   6   44   6  0.07692 0.126E+03     0.006
+ ...... Done.
+
+Output from subroutine EDGSET:
+==============================
+ Atomic relaxations requested! 
+
+ Reading simplified photo-absorption data ..... Done
+
+ Reading simplified relaxation data ..... Done
+
+ Reading parametrized XCOM photo cross section data ..... Done
+
+ Reading EADL relaxation data ......
+  Z =   6 has  4 shells
+  Z =   8 has  4 shells
+  Z =   7 has  4 shells
+  Z =  18 has  7 shells
+  Z =   1 has  1 shells
+  Z =  13 has  7 shells
+ ...... Done.
+
+EGSnrc SUCCESSFULLY 'HATCHED' FOR     4 MEDIA.
+
+
+The following media are defined:
+================================
+
+  0  carbon                   AE= 0.5210 AP= 0.0100 0
+  1  air                      AE= 0.5210 AP= 0.0100 1
+  2  water                    AE= 0.5210 AP= 0.0100 2
+  3  aluminum                 AE= 0.5210 AP= 0.0100 3
+
+
+Transport parameter and cross section options:
+==============================================
+Photon cross sections                             xcom            
+Compton cross sections                            default         
+Global Pcut                                       0.01
+Pair cross sections                               BH
+Pair angular sampling                             Simple
+Triplet production                                Off
+Bound Compton scattering                          norej
+Radiative Compton corrections                     Off
+Rayleigh scattering                               On
+Atomic relaxations                                On
+Photoelectron angular sampling                    On
+Photonuclear attenuation                          Off
+Photonuclear cross sections                       default         
+
+Global Ecut                                       0.521
+Brems cross sections                              BH
+Brems angular sampling                            KM
+Spin effects                                      On
+Electron Impact Ionization                        Off             
+Global Smax                                       1e+10
+ESTEPE                                            0.25
+Ximax                                             0.5
+Boundary crossing algorithm                       Exact
+Skin depth for BCA                                3
+Electron-step algorithm                           EGSnrc
+==============================================
+
+
+
+======================== geometry =====================
+ type = EGS_UnionGeometry
+ name = full_geometry
+ number of regions = 24
+ geometries:
+   rho_z_phi (type EGS_NDGeometry)
+   al_plate (type EGS_NDGeometry)
+=======================================================
+
+
+The simulation uses the following source:
+=========================================
+ Parallel beam from a shape of type point with monoenergetic 20 MeV, electrons
+
+
+Random number generator:
+============================================
+  type                = ranmar
+  high resolution     = no
+  initial seeds       = 33 97
+  numbers used so far = 0
+
+
+Run Control Object (RCO):
+=========================
+  type = simple
+
+
+The following ausgab objects are included in the simulation
+===========================================================
+
+
+Particle Track Scoring (tracks)
+======================================================
+ - Scoring photon tracks       = YES
+ - Scoring electron tracks     = YES
+ - Scoring positron tracks     = YES
+ - First event to score        = 0
+ - Last event to score         = 1024
+ - Track buffer size           = 1024
+ - Output file name            = /home/public/Desktop/UNH-npg-EGSnrc/egs_home/egs_app/cylinder.ptracks
+
+
+*******************************************
+Dose Scoring Object (dose)
+*******************************************
+
+ - Regions in dose calculator :24
+
+
+--------------------------------------
+medium      rho/(g/cm^3)
+--------------------------------------
+carbon     0.00184212
+air        0.00120479
+water      1.00000000
+aluminum   2.69890000
+--------------------------------------
+
+*******************************************
+
+
+
+
+
+Starting simulation on Thu Mar 21 11:06:19 2024
+
+    Fresh simulation of 100000 histories
+
+
+
+Running 100000 histories
+
+  Batch             CPU time        Result   Uncertainty(%)
+==========================================================
+      1                1.12              0         100.00
+      2                2.26              0         100.00
+      3                3.35              0         100.00
+      4                4.41              0         100.00
+      5                5.53              0         100.00
+      6                6.62              0         100.00
+      7                7.70              0         100.00
+      8                8.91              0         100.00
+      9               10.10              0         100.00
+     10               11.25              0         100.00
+
+
+Finished simulation
+
+Total cpu time for this run:            11.25 (sec.) 0.0031(hours)
+Histories per hour:                     3.2e+07       
+Number of random numbers used:          542002934     
+Number of electron CH steps:            2.64415e+07   
+Number of all electron steps:           3.84346e+07   
+
+Particle Track Scoring (tracks)
+======================================================
+   Total events scored:     1024
+   Total tracks scored:     160489
+   Still being scored:      0
+   Output file name:        /home/public/Desktop/UNH-npg-EGSnrc/egs_home/egs_app/cylinder.ptracks
+
+
+======================================================
+Dose Scoring Object(dose)
+======================================================
+=> last case = 100000 fluence = 100000
+
+
+==> Summary of region dosimetry (per particle)
+
+ir    medium  rho (g/cm^3)  Volume (cm^3)   Edep (MeV)                   D (Gy)                   
+--------------------------------------------------------------------------------------------------
+ 0  carbon     0.00184212       4.188800    1.4815e-03  +/-  0.840  %    3.0758e-11  +/-  0.840  %
+ 1  air        0.00120479       4.188800    9.7570e-04  +/-  0.866  %    3.0973e-11  +/-  0.866  %
+ 2  water      1.00000000       4.188800    3.7677e-01  +/-  1.057  %    1.4410e-11  +/-  1.057  %
+ 3  carbon     0.00184212       4.188800    1.4812e-03  +/-  0.843  %    3.0751e-11  +/-  0.843  %
+ 4  air        0.00120479       4.188800    9.7237e-04  +/-  0.865  %    3.0867e-11  +/-  0.865  %
+ 5  water      1.00000000       4.188800    3.8087e-01  +/-  1.053  %    1.4566e-11  +/-  1.053  %
+ 6  carbon     0.00184212       4.188800    1.4603e-03  +/-  0.849  %    3.0317e-11  +/-  0.849  %
+ 7  air        0.00120479       4.188800    9.6331e-04  +/-  0.864  %    3.0579e-11  +/-  0.864  %
+ 8  water      1.00000000       4.188800    3.7869e-01  +/-  1.052  %    1.4483e-11  +/-  1.052  %
+ 9  carbon     0.00184212       4.188800    1.4784e-03  +/-  0.844  %    3.0694e-11  +/-  0.844  %
+10  air        0.00120479       4.188800    9.7726e-04  +/-  0.859  %    3.1022e-11  +/-  0.859  %
+11  water      1.00000000       4.188800    3.8575e-01  +/-  1.048  %    1.4753e-11  +/-  1.048  %
+12  aluminum   2.69890000       8.796460    3.1388e+00  +/-  0.087  %    2.1180e-11  +/-  0.087  %
+--------------------------------------------------------------------------------------------------
+
+======================================================
+
+
+================================================================================
+Finished simulation
+
+  Elapsed time:                   12.2 s (  0.003 h)
+  CPU time:                       11.4 s (  0.003 h)
+  Ratio:                          1.071
+
+
+End of run                                             Thu Mar 21 11:06:31 2024
+================================================================================
+finishSimulation(egs_app) 0
