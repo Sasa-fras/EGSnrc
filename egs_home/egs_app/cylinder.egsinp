@@ -1,0 +1,204 @@
+##############################################################################
+#
+# egs++ Cylindrical Geometry Simulation for Issue #4 (Sasa-fras/UNH-npg-EGSnrc#4)
+#
+##############################################################################
+
+
+##############################################################################
+### Run control
+##############################################################################
+:start run control:
+    ncase = 1e5
+:stop run control:
+
+##############################################################################
+### Geometry
+##############################################################################
+:start geometry definition:
+
+    
+    # The cylinder
+     :start geometry:
+        library = egs_cylinders
+        type    = EGS_ZCylinders
+        name    = rho_coordinates
+        radii   = 2
+     :stop geometry:
+
+    # The planes
+     :start geometry:
+        library   = egs_planes
+        type      = EGS_Zplanes
+        positions = 0 4
+        name      = z_coordinates
+     :stop geometry:
+
+    # The I-planes
+     :start geometry:
+        library   = egs_iplanes
+        axis      = 0 0 0   0 0 1
+        angles    = 0 30 60 90 120 150
+           # above angles are in degrees, you can use
+           # 'angles in radian' to define angles in radians
+        name      = phi_coordinates
+     :stop geometry:
+
+    # The final geometry is a N-dimensional geometry
+    # made from the cylinder, the planes and the I-planes
+     :start geometry:
+        library   = egs_ndgeometry
+        name      = rho_z_phi
+        dimensions = rho_coordinates z_coordinates phi_coordinates
+        :start media input:
+            media = carbon air water aluminum
+            set medium =  0  0
+            set medium =  1  1
+            set medium =  2  2
+            set medium =  3  0
+            set medium =  4  1
+            set medium =  5  2
+            set medium =  6  0
+            set medium =  7  1
+            set medium =  8  2
+            set medium =  9  0
+            set medium = 10 1
+            set medium = 11 2
+         :stop media input:
+     :stop geometry:
+    
+    # The Aluminum cylinder
+     :start geometry:
+        name        = al_cylinder
+        library     = egs_cylinders
+        type        = EGS_ZCylinders
+        radii       = 2
+     :stop geometry:
+
+    # The Aluminum planes
+     :start geometry:
+        name      = al_planes
+        library   = egs_planes
+        type      = EGS_Zplanes
+        positions = -0.7 0 
+     :stop geometry:
+
+    # The Aluminum plate
+     :start geometry:
+        name      = al_plate
+        library   = egs_ndgeometry
+        dimensions = al_cylinder al_planes
+        :start media input:
+            media = carbon air water aluminum
+            set medium = 12 3
+        :stop media input:
+     :stop geometry:
+
+
+    # The Union Geometry
+     :start geometry:
+        name        = full_geometry
+        library     = egs_gunion
+        # Geometry priority follows order in list
+        geometries = rho_z_phi al_plate
+     :stop geometry:
+    simulation geometry = full_geometry
+
+:stop geometry definition:
+
+
+##############################################################################
+### Media
+##############################################################################
+:start media definition:
+
+    ### particle production thresholds
+    ae = 0.521                                  # MeV
+    ap = 0.010                                  # MeV
+    ue = 50.511                                 # MeV
+    up = 50                                     # MeV
+
+    ### carbondioxide
+    :start carbon:
+        density correction file = carbondioxide
+    :stop carbon:
+
+    ### air
+    :start air:
+        density correction file = air_dry_nearsealevel
+    :stop air:
+
+    ### water
+    :start water:
+        density correction file = water_liquid
+    :stop water:
+
+    ### aluminum
+    :start aluminum:
+        density correction file = aluminum
+    :stop aluminum:
+
+    ### See $HEN_HOUSE/pegs4/density_corrections/ for more materials, or create
+    ### you own: https://github.com/nrc-cnrc/EGSnrc/wiki/Generating-density-correction-files
+
+:stop media definition:
+
+
+##############################################################################
+### Source
+##############################################################################
+:start source definition:
+
+    ### pencil beam
+    :start source:
+        name      = pencil_beam
+        library   = egs_parallel_beam
+        charge    = -1
+        direction = 0 0 1
+        :start spectrum:
+            type = monoenergetic
+            energy = 20                         # MeV
+        :stop spectrum:
+        :start shape:
+            type     = point
+            position = 0 0 -8                   # cm
+        :stop shape:
+    :stop source:
+
+    ### use this source for the simulation
+    simulation source = pencil_beam
+
+:stop source definition:
+
+
+##############################################################################
+### Ausgab objects
+##############################################################################
+:start ausgab object definition:
+
+    ### generate particle tracks
+    :start ausgab object:
+        name    = tracks
+        library = egs_track_scoring
+    :stop ausgab object:
+
+    ### report dose in all regions
+    :start ausgab object:
+        name    = dose
+        library = egs_dose_scoring
+        volume  = 4.1888, 4.1888, 4.1888, 4.1888, 4.1888, 4.1888, 4.1888, 4.1888, 4.1888, 4.1888, 4.1888, 4.1888, 8.79646
+    :stop ausgab object:
+
+:stop ausgab object definition:
+
+
+##############################################################################
+### Viewer control
+##############################################################################
+:start view control:
+    set color = air      0   200 50  50               # r g b alpha
+    set color = water    0   220 255 100
+    set color = carbon   0   50  50  200
+    set color = aluminum 20  20  20  200
+
+:stop view control:
