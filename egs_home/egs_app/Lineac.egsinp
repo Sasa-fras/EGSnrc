@@ -1,0 +1,371 @@
+##############################################################################
+#
+# egs++ Cylindrical Geometry Simulation for Issue #9 (Sasa-fras/UNH-npg-EGSnrc#9)
+#
+##############################################################################
+
+
+##############################################################################
+### Run control
+##############################################################################
+:start run control:
+    ncase = 1e4
+:stop run control:
+
+:start MC transport parameter:
+    Global Ecut = 8.0    #MeV
+    #Global Pcut = 50.0   #MeV
+:stop MC transport parameter:
+##############################################################################
+### Geometry
+##############################################################################
+:start geometry definition:
+
+    :start geometry:
+
+        library = egs_cones      # this is the geometry library
+        type    = EGS_ConeStack  # this is the object type that we need
+                                 # from the geometry library egs_cones
+        axis    = 0 0 0   0 0 1  # we use the z-axis as the axis of
+                                 # the cone stack
+        name    = linac          # and give it the very original name 'linac'
+
+        ######################### the target
+        :start layer:
+            thickness    = 0.5
+            top radii    = 2.5  9.11111
+            bottom radii = 2.5  9.11111
+            media        = tungsten air
+        :stop layer:
+        #  ends at z = 0.5   regions 0...2
+
+        ######################### air between target and primary collimator
+        :start layer:
+            thickness    = 0.4
+            bottom radii = 2.5  9.11111
+            media        = air air
+        :stop layer:
+        #  ends at z = 0.9   regions 3...5
+
+        ######################### the primary collimator
+        :start layer:
+            thickness    = 5
+            top radii    = 0.5  9.11111
+            bottom radii = 3.0  9.11111
+            media        = air tungsten
+        :stop layer:
+        #  ends at z = 5.9   regions 6...8
+
+        ######################### air between primary collimator and
+        #                         flattening filter
+        :start layer:
+            thickness    = 2.1
+            top radii    = 9.11111
+            bottom radii = 9.11111
+            media        = air
+        :stop layer:
+        #  ends at z = 8   regions 9...11
+
+        ######################## start of flattening filter (ff)
+        #
+        #----------------------- layer 1
+        :start layer:
+            thickness    = 0.3
+            top radii    = 0    9.11111
+            bottom radii = 0.5  9.11111
+            media        = iron air
+        :stop layer:
+        #  ends at z = 8.3   regions 12...14
+        #----------------------- layer 2
+        :start layer:
+            thickness    = 0.7
+            bottom radii = 0.8  9.11111
+            media        = iron air
+        :stop layer:
+        #  ends at z = 9.0   regions 15...17
+        #----------------------- layer 3
+        :start layer:
+            thickness    = 1.0
+            top radii    = 0    0.8  9.11111
+            bottom radii = 0.4  1.7  9.11111
+            media        = tungsten iron air
+        :stop layer:
+        #  ends at z = 9.11111   regions 18...20
+        #----------------------- layer 4
+        :start layer:
+            thickness    = 1.2
+            bottom radii = 1.2  3.0  9.11111
+            media        = tungsten iron air
+        :stop layer:
+        #  ends at z = 11.2   regions 21...23
+        #
+        ############################ end of flattening filter
+
+
+        ##################### we skip the monitor chamber
+        #                     (too lazy to input so many layers)
+        #
+        ##################### air between ff and mirror
+        :start layer:
+            thickness    = 9.8
+            top radii    = 9.11111
+            bottom radii = 9.11111
+            media        = air
+        :stop layer:
+        #  ends at z = 21.0   regions 24...26
+        ##################### placeholder for the mirror
+        #                     it is left empty for now, it will be
+        #                     divided into regions later on
+        #                     when this geometry becomes the base geometry
+        #                     of a CD geometry used to model the final linac
+        #
+        :start layer:
+            thickness    = 2
+            bottom radii = 9.11111
+            media        = air
+        :stop layer:
+        #  ends at z = 23.0   regions 27...29
+
+        ##################### air between mirror and jaws
+        :start layer:
+            thickness    = 6
+            bottom radii = 9.11111
+            media        = air
+        :stop layer:
+        #  ends at z = 29.0   regions 30...32
+
+        ##################### placeholder for the x-jaws
+        #                     same comments as for the mirror layer.
+        #
+        :start layer:
+            thickness    = 9
+            bottom radii = 9.11111
+            media        = tungsten
+        :stop layer:
+        #  ends at z = 38.0   regions 33...35
+
+        ##################### air between x- and y-jaws
+        :start layer:
+            thickness    = 0.5
+            bottom radii = 9.11111
+            media        = air
+        :stop layer:
+        #  ends at z = 38.5   regions 36...38
+
+        ##################### placeholder for the y-jaws
+        #                     same comments as for the mirror layer.
+        #
+        :start layer:
+            thickness    = 9
+            bottom radii = 9.11111
+            media        = tungsten
+        :stop layer:
+        #  ends at z = 47.5   regions 39...41
+
+    :stop geometry:
+    ################################### end of the cone stack named 'linac'
+
+    ################################### the mirror planes
+    #                                   we make them extend to infinity
+    #                                   but they will be cut to the desired
+    #                                   size when put into the linac
+    :start geometry:
+        library = egs_planes
+        type    = EGS_Planes
+        name    = mirror_planes
+        normal  =  0.316227766017 0 0.948683298051
+        #positions = -100 20.8709325571 20.8710325571 20.8775325571 120
+        #
+        #    Let's use a single, slightly ticker layer for better
+        #    visibility
+        #
+        positions = -100 20.8 21 120
+        :start media input:
+            media = air aluminum PMMA700ICRU
+            set medium = 1 1
+        :stop media input:
+    :stop geometry:
+
+    ################################### the x-jaws planes
+    #                 We use a plane collection which will be cut
+    #                 to the proper size in the z-direction when
+    #                 put into the x-jaws placeholder in the linac geometry
+    #                 We make the left- and right-most regions very large
+    #                 These regions will be cut by the bounding cylinder of
+    #                 the base linac geometry
+    #
+    :start geometry:
+        library = egs_planes
+        type    = EGS_PlaneCollection
+        name    = x_jaws
+        normals = 1,0,0    0.99875,0,0.049938,  0.99875,0,-0.049938, 1,0,0
+        positions = -50  0  0   50
+        :start media input:
+            media = tungsten air
+            set medium = 0 2 0
+            set medium = 1 1
+        :stop media input:
+    :stop geometry:
+
+    ################################### the y-jaws planes
+    #                 We use a plane collection which will be cut
+    #                 to the proper size in the z-direction when
+    #                 put into the x-jaws placeholder in the linac geometry
+    #                 We make the left- and right-most regions very large
+    #                 These regions will be cut by the bounding cylinder of
+    #                 the base linac geometry
+    #
+    :start geometry:
+        library = egs_planes
+        type    = EGS_PlaneCollection
+        name    = y_jaws
+        normals = 0,1,0    0,0.99875,0.049938,  0,0.99875,-0.049938, 0,1,0
+        positions = -50  0  0   50
+        :start media input:
+            media = tungsten air
+            set medium = 0 2 0
+            set medium = 1 1
+        :stop media input:
+    :stop geometry:
+
+
+    ################################## the final accelerator
+    :start geometry:
+        library = egs_cdgeometry
+        name    = final_linac
+        base geometry = linac
+        set geometry = 27 mirror_planes   # define the mirror
+        set geometry = 33 x_jaws          # define the x-jaws
+        set geometry = 39 y_jaws          # define the y-jaws
+    :stop geometry:
+
+    simulation geometry = final_linac
+    #simulation geometry = linac
+
+:stop geometry definition:
+
+
+##############################################################################
+### Media
+##############################################################################
+:start media definition:
+
+    ### particle production thresholds
+    ae = 0.521                                  # MeV
+    ap = 0.010                                  # MeV
+    ue = 50.511                                 # MeV
+    up = 50                                     # MeV
+
+
+    ### d-ammonium
+    :start ND3:
+        density correction file = solid_ammonia2
+    :stop ND3:
+
+    ### aluminum
+    :start aluminum:
+        density correction file = aluminum
+    :stop aluminum:
+
+    ### argon
+    :start argon:
+        density correction file = liquid_argon
+    :stop argon:
+
+    ### styrofoam
+    :start foam:
+        density correction file = polystyrene
+    :stop foam:
+
+    ### air
+    :start air:
+        density correction file = air_dry_nearsealevel
+    :stop air:
+
+    ### iron
+    :start iron:
+        density correction file = iron
+    :stop iron:
+
+    ### tungsten
+    :start tungsten:
+        density correction file = tungsten
+    :stop tungsten:
+
+    ### PMMA700ICRU
+    :start PMMA700ICRU:
+        density correction file = polymethylmethacrylate__lucite___perspex___plexiglas_
+    :stop PMMA700ICRU:
+
+    
+
+    
+
+    ### See $HEN_HOUSE/pegs4/density_corrections/ for more materials, or create
+    ### you own: https://github.com/nrc-cnrc/EGSnrc/wiki/Generating-density-correction-files
+
+:stop media definition:
+
+
+##############################################################################
+### Source
+##############################################################################
+:start source definition:
+
+    ### pencil beam
+    :start source:
+        name      = pencil_beam
+        library   = egs_parallel_beam
+        charge    = -1
+        direction = 0 0 -1
+        :start spectrum:
+            type = monoenergetic
+            energy = 30                         # MeV
+        :stop spectrum:
+        :start shape:
+            type     = point
+            position = 0 0 50                   # cm
+        :stop shape:
+    :stop source:
+
+    ### use this source for the simulation
+    simulation source = pencil_beam
+
+:stop source definition:
+
+
+##############################################################################
+### Ausgab objects
+##############################################################################
+:start ausgab object definition:
+
+    ### generate particle tracks
+    :start ausgab object:
+        name    = tracks
+        library = egs_track_scoring
+    :stop ausgab object:
+
+    ### report dose in all regions
+    :start ausgab object:
+        name    = dose
+        library = egs_dose_scoring
+        volume = 1
+    :stop ausgab object:
+
+:stop ausgab object definition:
+
+
+##############################################################################
+### Viewer control
+##############################################################################
+:start view control:
+    set color = air         0   200 50  50               # r g b alpha
+    set color = aluminum    20  20  20  75
+    set color = argon       0   0   200 100
+    set color = ammonium    200 200 200 100
+    set color = foam        200 200 200 200 
+    set color = iron        20  20  20  75
+    set color = tungsten    20  20  20  75
+    set color = PMMA700ICRU 20  20  20  75
+
+:stop view control:

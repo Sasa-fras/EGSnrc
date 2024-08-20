@@ -1,0 +1,24 @@
+  Warning: material data file not supplied.
+  Thus, you must define media explicitly in input file
+  or via density correction file.
+  
+  For medium: aluminum                
+  Density correction file specified in .egsinp file.
+  Composition specified in density correction file
+  Rho specified in density correction file
+  
+  For medium: argon                   
+  Density correction file specified in .egsinp file.
+  Composition specified in density correction file
+  Rho specified in density correction file
+  
+  For medium: ammonium                
+  Density correction file specified in .egsinp file.
+  Error: Density correction fileammonium.density                                                                                                                                                                                                                                                
+  does not exist in
+  $EGS_HOME/pegs4/density_corrections, 
+  $EGS_HOME/pegs4/density_corrections/elements, 
+  $EGS_HOME/pegs4/density_corrections/compounds, 
+  $EGS_HOME/pegs4/density, 
+  $HEN_HOUSE/pegs4/density_corrections/elements or 
+  $HEN_HOUSE/pegs4/density_corrections/compounds.

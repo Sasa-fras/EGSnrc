@@ -102,7 +102,13 @@ int myapp::ausgab(int iarg) {
     int latch  = the_stack->latch[np];
 
     // handle the ausgab call
+    if (E < 8.0) && iq == -1 {
+        the_stack->wt[np] = 0.0;
+    }
 
+    if (E < 100.0) && iq == 0 {
+        the_stack->wt[np] = 0.0;
+    }
     return 0;
 }
 */

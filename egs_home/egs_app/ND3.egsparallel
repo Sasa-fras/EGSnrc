@@ -1,0 +1,38 @@
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.184308190: BEGIN egs-parallel
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.185852402: EGSnrc environment:
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.188380127:     HEN_HOUSE  = /home/public/Desktop/UNH-npg-EGSnrc/HEN_HOUSE/
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.190195490:     EGS_HOME   = /home/public/Desktop/UNH-npg-EGSnrc/egs_home/
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.191597439:     EGS_CONFIG = /home/public/Desktop/UNH-npg-EGSnrc/HEN_HOUSE/specs/fe83057.conf
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.195211215: parallel options:
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.197227471:     batch      = cpu
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.199555974:     queue      = long
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.201459784:     nthread    = 8
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.202945442:     delay      = 0
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.205498557:     command    = egs_app -i ND3.egsinp
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.207411618:     basename   = ND3
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.209423063:     first job  = 1
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.211599590:     options    = 
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.215174758: log file: /home/public/Desktop/UNH-npg-EGSnrc/egs_home/egs_app/ND3.egsparallel
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.217135405: cd /home/public/Desktop/UNH-npg-EGSnrc/egs_home/egs_app
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.218678074: EXEC egs-parallel-cpu long 8 0 1 ND3 'egs_app -i ND3.egsinp' '' verbose
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.221079369: BEGIN /home/public/Desktop/UNH-npg-EGSnrc/HEN_HOUSE/scripts/egs-parallel-cpu
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.222813094: BEGIN /home/public/Desktop/UNH-npg-EGSnrc/HEN_HOUSE/scripts/egs-parallel-cpu
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.226277987: remove existing egsjob file: ND3.egsjob
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.234072683: BEGIN host=linux-virtualbox
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.236103503: job 0001: RUN egs_app -i ND3.egsinp -b -P 8 -j 1 -f 1
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.239135711: job 0001: host=linux-virtualbox pid=3039
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.242451774: job 0002: RUN egs_app -i ND3.egsinp -b -P 8 -j 2 -f 1
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.245633636: job 0002: host=linux-virtualbox pid=3054
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.249999872: job 0003: RUN egs_app -i ND3.egsinp -b -P 8 -j 3 -f 1
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.254023484: job 0003: host=linux-virtualbox pid=3064
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.261922038: job 0004: RUN egs_app -i ND3.egsinp -b -P 8 -j 4 -f 1
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.265735514: job 0004: host=linux-virtualbox pid=3074
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.270685136: job 0005: RUN egs_app -i ND3.egsinp -b -P 8 -j 5 -f 1
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.274501364: job 0005: host=linux-virtualbox pid=3084
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.279618582: job 0006: RUN egs_app -i ND3.egsinp -b -P 8 -j 6 -f 1
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.284937485: job 0006: host=linux-virtualbox pid=3094
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.293058495: job 0007: RUN egs_app -i ND3.egsinp -b -P 8 -j 7 -f 1
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.297354021: job 0007: host=linux-virtualbox pid=3103
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.313968792: job 0008: RUN egs_app -i ND3.egsinp -b -P 8 -j 8 -f 1
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:47:45.368423813: job 0008: host=linux-virtualbox pid=3112
+EGSnrc egs-parallel 2024-04-15 (UTC) 16:48:24.775400888: DONE.

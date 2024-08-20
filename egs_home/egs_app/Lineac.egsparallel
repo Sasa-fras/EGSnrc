@@ -1,0 +1,38 @@
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.513445464: BEGIN egs-parallel
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.514696414: EGSnrc environment:
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.516077302:     HEN_HOUSE  = /home/public/Desktop/UNH-npg-EGSnrc/HEN_HOUSE/
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.517604444:     EGS_HOME   = /home/public/Desktop/UNH-npg-EGSnrc/egs_home/
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.518891926:     EGS_CONFIG = /home/public/Desktop/UNH-npg-EGSnrc/HEN_HOUSE/specs/fe83057.conf
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.522989178: parallel options:
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.524276930:     batch      = cpu
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.526023018:     queue      = long
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.528156106:     nthread    = 8
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.532202651:     delay      = 0
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.534097881:     command    = egs_app -i Lineac.egsinp
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.535873663:     basename   = Lineac
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.537722272:     first job  = 1
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.539605278:     options    = 
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.543520125: log file: /home/public/Desktop/UNH-npg-EGSnrc/egs_home/egs_app/Lineac.egsparallel
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.545380050: cd /home/public/Desktop/UNH-npg-EGSnrc/egs_home/egs_app
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.547129581: EXEC egs-parallel-cpu long 8 0 1 Lineac 'egs_app -i Lineac.egsinp' '' verbose
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.550257165: BEGIN /home/public/Desktop/UNH-npg-EGSnrc/HEN_HOUSE/scripts/egs-parallel-cpu
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.551839130: BEGIN /home/public/Desktop/UNH-npg-EGSnrc/HEN_HOUSE/scripts/egs-parallel-cpu
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.556794409: remove existing egsjob file: Lineac.egsjob
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.565660662: BEGIN host=linux-virtualbox
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.571526577: job 0001: RUN egs_app -i Lineac.egsinp -b -P 8 -j 1 -f 1
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.575137621: job 0001: host=linux-virtualbox pid=8125
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.577998944: job 0002: RUN egs_app -i Lineac.egsinp -b -P 8 -j 2 -f 1
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.581603229: job 0002: host=linux-virtualbox pid=8140
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.585280125: job 0003: RUN egs_app -i Lineac.egsinp -b -P 8 -j 3 -f 1
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.588964617: job 0003: host=linux-virtualbox pid=8150
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.592935384: job 0004: RUN egs_app -i Lineac.egsinp -b -P 8 -j 4 -f 1
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.596113984: job 0004: host=linux-virtualbox pid=8160
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.600878960: job 0005: RUN egs_app -i Lineac.egsinp -b -P 8 -j 5 -f 1
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.605286592: job 0005: host=linux-virtualbox pid=8170
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.610520071: job 0006: RUN egs_app -i Lineac.egsinp -b -P 8 -j 6 -f 1
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.618564888: job 0006: host=linux-virtualbox pid=8180
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.623536198: job 0007: RUN egs_app -i Lineac.egsinp -b -P 8 -j 7 -f 1
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.628725830: job 0007: host=linux-virtualbox pid=8191
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.633828473: job 0008: RUN egs_app -i Lineac.egsinp -b -P 8 -j 8 -f 1
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.638761906: job 0008: host=linux-virtualbox pid=8201
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.672495745: DONE.

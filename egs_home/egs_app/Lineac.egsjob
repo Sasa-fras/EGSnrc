@@ -1,0 +1,2 @@
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.562422226: job 0001: BEGIN host=$(hostname) pid=8073
+EGSnrc egs-parallel 2024-04-14 (UTC) 20:41:24.670372437: job 0008: END host=$(hostname) pid=8073

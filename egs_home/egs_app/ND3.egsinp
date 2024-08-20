@@ -1,0 +1,387 @@
+##############################################################################
+#
+# egs++ Cylindrical Geometry Simulation for Issue #9 (Sasa-fras/UNH-npg-EGSnrc#9)
+#
+##############################################################################
+
+
+##############################################################################
+### Run control
+##############################################################################
+:start run control:
+    ncase = 1e6
+:stop run control:
+
+:start MC transport parameter:
+    Global Ecut = 8.0    #MeV
+    Global Pcut = 50.0   #MeV
+:stop MC transport parameter:
+##############################################################################
+### Geometry
+##############################################################################
+:start geometry definition:
+
+    
+    # The Argon Box
+     :start geometry:
+        name        = Ar_box_basic
+        library     = egs_box
+        box size    = 20
+        :start media input:
+            media = argon
+        :stop media input:
+     :stop geometry:
+     :start geometry:
+        name        = Ar_box
+        library     = egs_gtransformed
+        my geometry = Ar_box_basic
+        :start transformation:
+            translation = 0 0 10.8
+        :stop transformation:
+     :stop geometry:
+
+
+     # The Foam Box
+     :start geometry:
+        name        = Foam_box_basic
+        library     = egs_box
+        box size    = 24
+        :start media input:
+            media = air
+        :stop media input:
+     :stop geometry:
+     :start geometry:
+        name        = Foam_box
+        library     = egs_gtransformed
+        my geometry = Foam_box_basic
+        :start transformation:
+            translation = 0 0 10.8
+        :stop transformation:
+     :stop geometry:
+
+    
+     # The Argon cylinder
+     :start geometry:
+        name        = ar_cylinder
+        library     = egs_cylinders
+        type        = EGS_ZCylinders
+        radii       = 1.5
+     :stop geometry:
+
+    # The Argon planes
+     :start geometry:
+        name      = ar_planes
+        library   = egs_planes
+        type      = EGS_Zplanes
+        positions = 1.8 3.8 
+     :stop geometry:
+
+    # The Argon geometry
+     :start geometry:
+        name      = Ar_plate
+        library   = egs_ndgeometry
+        dimensions = ar_cylinder ar_planes
+        :start media input:
+            media = argon
+        :stop media input:
+     :stop geometry:
+
+
+    # The Aluminum cylinder
+     :start geometry:
+        name        = al_cylinder
+        library     = egs_cylinders
+        type        = EGS_ZCylinders
+        radii       = 1.5
+     :stop geometry:
+
+    # The Aluminum planes
+     :start geometry:
+        name      = al_planes
+        library   = egs_planes
+        type      = EGS_Zplanes
+        positions = 0.8 1.8 
+     :stop geometry:
+
+    # The Aluminum plate
+     :start geometry:
+        name      = Al_plate
+        library   = egs_ndgeometry
+        dimensions = al_cylinder al_planes
+        :start media input:
+            media = aluminum
+        :stop media input:
+     :stop geometry:
+
+     # The Foam cylinder
+     :start geometry:
+        name        = foam_cylinder
+        library     = egs_cylinders
+        type        = EGS_ZCylinders
+        radii       = 1.5
+     :stop geometry:
+
+    # The Foam planes
+     :start geometry:
+        name      = foam_planes
+        library   = egs_planes
+        type      = EGS_Zplanes
+        positions = 0.8 1.8 
+     :stop geometry:
+
+    # The Foam plate
+     :start geometry:
+        name      = Foam_plate
+        library   = egs_ndgeometry
+        dimensions = foam_cylinder foam_planes
+        :start media input:
+            media = air
+        :stop media input:
+     :stop geometry:
+
+
+
+    # The cylinder
+     :start geometry:
+        library = egs_cylinders
+        type    = EGS_ZCylinders
+        name    = r_coordinates
+        radii   = 1.5
+     :stop geometry:
+
+    # The planes
+     :start geometry:
+        library   = egs_planes
+        type      = EGS_Zplanes
+        positions = 4 4.5 5 5.5 6 6.5 7 7.5 8 8.5 9 9.5 10
+        name      = z_coordinates
+     :stop geometry:
+
+     :start geometry:
+        library   = egs_planes
+        type      = EGS_Xplanes
+        positions = -1.75 -1.25 -0.75 -0.25 0.25 0.75 1.25 1.75
+        name      = x_coordinates
+     :stop geometry:
+
+     :start geometry:
+        library   = egs_planes
+        type      = EGS_Yplanes
+        positions = -1.75 -1.25 -0.75 -0.25 0.25 0.75 1.25 1.75
+        name      = y_coordinates
+     :stop geometry:
+
+
+    # The cylinder for incasing the ND3
+     :start geometry:
+        library = egs_cylinders
+        type    = EGS_ZCylinders
+        name    = r_casing
+        radii   = 1.7
+     :stop geometry:
+
+    # The planes for the cylinder incasing the ND3
+     :start geometry:
+        library   = egs_planes
+        type      = EGS_Zplanes
+        positions = 3.8 10.2
+        name      = z_casing
+     :stop geometry:
+
+     # Final geometry for ND3 casing
+     :start geometry:
+        library   = egs_ndgeometry
+        name      = Casing_cylinder
+        dimensions = r_casing z_casing
+        :start media input:
+            media = aluminum
+         :stop media input:
+     :stop geometry:
+
+
+    # made from the cylinder, the planes and the I-planes
+     :start geometry:
+        library   = egs_ndgeometry
+        name      = ND3_cylinder
+        dimensions = r_coordinates x_coordinates y_coordinates z_coordinates
+        :start media input:
+            media = ND3
+         :stop media input:
+     :stop geometry:
+
+
+    # ND3 cylinder put into Casing cylinder
+     :start geometry:
+        library   = egs_gunion
+        name      = Target_cylinder
+        geometries = ND3_cylinder Casing_cylinder
+     :stop geometry:
+
+
+    #Flattening filter
+     :start geometry:
+        library = egs_cones
+        type = EGS_ConeStack
+        name = Flattening_filter
+        axis = 0 0 3.8 0 0 -1
+        :start layer:
+            thickness = 0.2
+            top radii = 2.7
+            bottom radii = 2.7
+            media = aluminum
+        :stop layer:
+        :start layer:
+            thickness = 0.2
+            top radii = 2.7
+            bottom radii = 2.24
+            media = aluminum
+        :stop layer:
+        :start layer:
+            thickness = 0.2
+            top radii = 2.24
+            bottom radii = 1.95
+            media = aluminum
+        :stop layer:
+        :start layer:
+            thickness = 1.2
+            top radii = 1.95
+            bottom radii = 0.575
+            media = aluminum
+        :stop layer:
+        :start layer:
+            thickness = 2.65
+            top radii = 0.575
+            bottom radii = 0.5
+            media = aluminum
+        :stop layer:
+        :start layer:
+            thickness = 0.55
+            top radii = 0.5
+            bottom radii = 0.2
+            media = aluminum
+        :stop layer:
+    :stop geometry:
+
+
+
+
+    # The Union Geometry
+     :start geometry:
+        name        = full_geometry
+        library     = egs_gunion
+        # Geometry priority follows order in list
+        geometries = ND3_cylinder Casing_cylinder Al_plate Ar_box Foam_box
+     :stop geometry:
+    simulation geometry = full_geometry
+
+:stop geometry definition:
+
+
+##############################################################################
+### Media
+##############################################################################
+:start media definition:
+
+    ### particle production thresholds
+    ae = 0.521                                  # MeV
+    ap = 0.010                                  # MeV
+    ue = 50.511                                 # MeV
+    up = 50                                     # MeV
+
+
+    ### d-ammonium
+    :start ND3:
+        density correction file = solid_ammonia2
+    :stop ND3:
+
+    ### aluminum
+    :start aluminum:
+        density correction file = aluminum
+    :stop aluminum:
+
+    ### argon
+    :start argon:
+        density correction file = liquid_argon
+    :stop argon:
+
+    ### styrofoam
+    :start foam:
+        density correction file = polystyrene
+    :stop foam:
+
+    ### air
+    :start air:
+        density correction file = air_dry_nearsealevel
+    :stop air:
+
+    
+
+    
+
+    ### See $HEN_HOUSE/pegs4/density_corrections/ for more materials, or create
+    ### you own: https://github.com/nrc-cnrc/EGSnrc/wiki/Generating-density-correction-files
+
+:stop media definition:
+
+
+##############################################################################
+### Source
+##############################################################################
+:start source definition:
+
+    ### pencil beam
+    :start source:
+        name      = pencil_beam
+        library   = egs_parallel_beam
+        charge    = -1
+        direction = 0 0 1
+        :start spectrum:
+            type = monoenergetic
+            energy = 20                         # MeV
+        :stop spectrum:
+        :start shape:
+            type     = point
+            position = 0 0 -5                   # cm
+        :stop shape:
+    :stop source:
+
+    ### use this source for the simulation
+    simulation source = pencil_beam
+
+:stop source definition:
+
+
+##############################################################################
+### Ausgab objects
+##############################################################################
+:start ausgab object definition:
+
+    ### generate particle tracks
+    :start ausgab object:
+        name    = tracks
+        library = egs_track_scoring
+        start scoring = 0
+        stop scoring = 10000
+    :stop ausgab object:
+
+    ### report dose in all regions
+    :start ausgab object:
+        name    = dose
+        library = egs_dose_scoring
+        volume = 0.125
+    :stop ausgab object:
+
+:stop ausgab object definition:
+
+
+##############################################################################
+### Viewer control
+##############################################################################
+:start view control:
+    set color = air      0   200 50  50               # r g b alpha
+    set color = aluminum 20  20  20  75
+    set color = argon    0   0   200 100
+    set color = ammonium 200 200 200 50
+    set color = foam     200 200 200 50 
+
+:stop view control:
